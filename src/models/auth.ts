@@ -3,7 +3,7 @@ import { IRefreshToken } from "../interface/task";
 let refreshTokens:IRefreshToken[]=[];
 
 //function to add token on array (create)
-export function createRefreshToken(token:string, user_id: string) {
+export function createRefreshToken(user_id: string,token:string) {
     refreshTokens.push({
             user_id:user_id,
             token:token
