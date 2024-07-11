@@ -16,6 +16,7 @@ export function createTask(task: ITask, user_id: string) {
   //to prevent to create repeated task
   if(existingTask){
     logger.warn('Task already exists for the user');
+    
     throw (new BadRequestError("Task already exists for the user"));
   }
 

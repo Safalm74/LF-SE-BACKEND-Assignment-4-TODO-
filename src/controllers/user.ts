@@ -5,19 +5,6 @@ import loggerWithNameSpace from "../utils/logger";
 
 const logger = loggerWithNameSpace("User Controller");
 
-//controller function to get user by id:
-export function getUserById(req: Request, res: Response, next: NextFunction) {
-  try {
-    const { id } = req.params; //getting id from request params
-
-    const data = UserService.getUserById(id);
-
-    res.status(HttpStatusCode.OK).json(data);
-  } catch (error) {
-    next(error);
-  }
-}
-
 //controller function to create user:
 export async function createUser(
   req: Request,
@@ -31,6 +18,19 @@ export async function createUser(
     const req_user = await UserService.createUser(body);
 
     res.status(HttpStatusCode.CREATED).json(req_user);
+  } catch (error) {
+    next(error);
+  }
+}
+
+//controller function to get user by id:
+export function getUserById(req: Request, res: Response, next: NextFunction) {
+  try {
+    const  id  = `${req.params.id}`; //getting id from request params
+
+    const data = UserService.getUserById(id);
+
+    res.status(HttpStatusCode.OK).json(data);
   } catch (error) {
     next(error);
   }

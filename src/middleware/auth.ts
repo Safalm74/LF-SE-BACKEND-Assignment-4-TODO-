@@ -67,13 +67,13 @@ export function authorize(permission: string) {
 
     //checking if permision required includes for user
     if (!user.permissions.includes(permission)) {
-      logger.error('Permission not granted');
+      //logger.error('Permission not granted');
       
       next(new ForbiddenError("Forbidden"));
+    }else{
+      logger.info("Authorized");
+
+      next();
     }
-
-    logger.info("Authorized");
-
-    next();
   };
 }

@@ -36,10 +36,6 @@ const roles = {
     "task.get",
   ],
   user: [
-    "user.post",
-    "user.get",
-    "user.put",
-    "user.delete",
     "task.post",
     "task.put",
     "task.delete",

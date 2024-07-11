@@ -2,6 +2,16 @@ import Joi from "joi";
 
 const roles=['super_user','user'];
 
+//Schema to get id from params
+export const userParamSchema=Joi.object(
+    {
+        id:Joi.number().optional().messages({
+            "number.base": "id must be a number",
+          })
+    }
+);
+
+//Schema to get user
 export const getUserQuerySchema = Joi.object({
   q: Joi.string().optional(),
 
@@ -14,6 +24,7 @@ export const getUserQuerySchema = Joi.object({
     }
 );
 
+//Schema to create user
 export const createUserBodySchema=Joi.object(
     {
         name:Joi.string().required().messages(
@@ -69,14 +80,7 @@ export const createUserBodySchema=Joi.object(
     }
 );
 
-export const userParamSchema=Joi.object(
-    {
-        id:Joi.number().optional().messages({
-            "number.base": "id must be a number",
-          })
-    }
-);
-
+//Schema to update user
 export const updateUserBodySchema=Joi.object(
     {
         name:Joi.string().optional().messages(

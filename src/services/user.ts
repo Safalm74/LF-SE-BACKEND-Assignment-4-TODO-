@@ -39,7 +39,7 @@ export function getUserByEmail(email: string) {
 }
 
 //service function to create new user
-export async function createUser(user: IUser) {
+export async function createUser(user: IUser) { //async for using hash of bcrypt
   logger.info("Attempting to add user");
 
   //checking required data (email and password)
@@ -82,7 +82,7 @@ export async function createUser(user: IUser) {
 }
 
 //service to handle update user
-export async function updatedUser(id: string, updateUser: IUser) {
+export async function updatedUser(id: string, updateUser: IUser) {//async for using hash of bcrypt
   logger.info("Attempting to update user");
 
   logger.info("Attempting to get user by id");

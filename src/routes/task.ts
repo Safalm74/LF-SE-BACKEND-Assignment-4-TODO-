@@ -2,8 +2,8 @@
 import express from "express";
 import * as TaskController from "../controllers/task";
 import { aunthenticate, authorize } from "../middleware/auth";
-import { validateReqBody } from "../middleware/validation";
-import { createTaskBodySchema, taskParamSchema, updateTaskBodySchema } from "../schema/task";
+import { validateReqBody, validateReqParams } from "../middleware/validation";
+import { createTaskBodySchema, deleteTaskBodySchema, taskParamSchema, updateTaskBodySchema } from "../schema/task";
 
 //creating route
 const router = express();
@@ -42,7 +42,7 @@ router.get(
 //route to update task: U
 router.put(
   "/:id",
-  validateReqBody(taskParamSchema),
+  validateReqParams(taskParamSchema),
   validateReqBody(updateTaskBodySchema),
   aunthenticate,
   authorize("task.put"),
@@ -52,8 +52,8 @@ router.put(
 //route to delete task: D
 router.delete(
   "/:id",
-  validateReqBody(taskParamSchema),
-  validateReqBody(updateTaskBodySchema),
+  validateReqParams(taskParamSchema),
+  validateReqBody(deleteTaskBodySchema),
   aunthenticate,
   authorize("task.delete"),
  TaskController.deleteTask

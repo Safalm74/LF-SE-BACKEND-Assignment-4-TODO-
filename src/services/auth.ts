@@ -13,7 +13,7 @@ const logger = loggerWithNameSpace("Auth Service");
 
 //service function to login:
 //returns new access and refresh token
-export async function login(body: Pick<IUser, "email" | "password">) {
+export async function login(body: Pick<IUser, "email" | "password">) {//to await bcrypt compare
   //getting existing user
   logger.info("Attempting to get email by id");
 
@@ -77,7 +77,7 @@ export async function login(body: Pick<IUser, "email" | "password">) {
 }
 
 //service function to generate new access token from valid refresh token
-export async function refreshAccessToken(RefreshToken: string) {
+export async function refreshAccessToken(RefreshToken: string) { //JWT sign await
   //refresh token is already ensured not to be empty in controller
   const token = RefreshToken.split(" ");
 

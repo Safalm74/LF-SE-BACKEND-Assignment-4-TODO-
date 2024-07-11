@@ -49,6 +49,12 @@ router.put(
 );
 
 //Route to delete user by id
-router.delete("/:id", aunthenticate, authorize("user.delete"), deleteUser);
+router.delete(
+  "/:id",
+  validateReqParams(userParamSchema),
+  aunthenticate,
+  authorize("user.delete"),
+  deleteUser
+);
 
 export default router;
